@@ -11,6 +11,7 @@ const Info = styled(Card.Content)`
 `;
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.ui.quaternary};
+  margin-bottom: ${(props) => props.theme.space[3]};
 `;
 const Rating = styled.View`
   flex-direction: row;
