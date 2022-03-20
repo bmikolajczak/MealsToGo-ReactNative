@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Text, Image, View } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
@@ -47,7 +48,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     address = "234 Happy street",
     isOpenNow = true,
     rating = 3,
-    isClosedTemporarily = true,
+    isClosedTemporarily = false,
   } = restaurant;
   const ratingArr = Array.from(new Array(Math.floor(rating)));
   return (
@@ -62,10 +63,12 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && <Text>CLOSED TEMPORARILY</Text>}
-            <View style={{ paddingLeft: 16 }} />
-            {isOpenNow && <OpenSvg xml={open} width={24} height={24} />}
-            <View style={{ paddingLeft: 16 }} />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            <Spacer position="left" size="large">
+              {isOpenNow && <OpenSvg xml={open} width={24} height={24} />}
+            </Spacer>
+            <Spacer position="left" size="large">
+              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            </Spacer>
           </SectionEnd>
         </Section>
         <Title>{name}</Title>
