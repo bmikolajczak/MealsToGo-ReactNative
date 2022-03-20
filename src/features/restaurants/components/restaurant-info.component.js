@@ -1,42 +1,20 @@
 import React from "react";
-import styled from "styled-components/native";
-import { Text, Image, View } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-
-const Title = styled.Text`
-font-family: ${(props) => props.theme.fonts.heading}
-  color: ${(props) => props.theme.colors.text.primary};
-`;
-const Address = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-const Info = styled(Card.Content)`
-  padding: ${(props) => props.theme.space[3]};
-`;
-const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.ui.quaternary};
-`;
-const Rating = styled.View`
-  flex-direction: row;
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-const OpenSvg = styled(SvgXml)`
-  margin-left: auto;
-`;
-const Section = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-const SectionEnd = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
+import {
+  Address,
+  Info,
+  RestaurantCard,
+  Rating,
+  OpenSvg,
+  Section,
+  SectionEnd,
+  Icon,
+} from "./restaurant-info-card.styles";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -48,7 +26,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     address = "234 Happy street",
     isOpenNow = true,
     rating = 3,
-    isClosedTemporarily = false,
+    isClosedTemporarily = true,
   } = restaurant;
   const ratingArr = Array.from(new Array(Math.floor(rating)));
   return (
@@ -62,16 +40,16 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
             ))}
           </Rating>
           <SectionEnd>
-            {isClosedTemporarily && <Text>CLOSED TEMPORARILY</Text>}
+            {isClosedTemporarily && <Text variant="error">CLOSED TEMPORARILY</Text>}
             <Spacer position="left" size="large">
               {isOpenNow && <OpenSvg xml={open} width={24} height={24} />}
             </Spacer>
             <Spacer position="left" size="large">
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
         </Section>
-        <Title>{name}</Title>
+        <Text variant="label">{name}</Text>
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>
