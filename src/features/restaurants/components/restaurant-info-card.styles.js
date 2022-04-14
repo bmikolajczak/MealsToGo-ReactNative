@@ -34,4 +34,13 @@ const Icon = styled.Image`
   height: 15px;
 `;
 
-export { Address, Info, RestaurantCard, Rating, OpenSvg, Section, SectionEnd, Icon };
+export {
+  Address,
+  Info,
+  RestaurantCard,
+  Rating,
+  OpenSvg,
+  Section,
+  SectionEnd,
+  Icon,
+};
