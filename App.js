@@ -30,7 +30,9 @@ const Maps = () => (
 const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
   return {
-    tabBarIcon: ({ size, color }) => <Ionicons name={iconName} size={size} color={color} />,
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
   };
 };
 export default function App() {
